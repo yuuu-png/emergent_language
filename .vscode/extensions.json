@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "donjayamanne.python-extension-pack",
+        "ms-toolsai.jupyter",
+        "github.copilot",
+        "fabiospampinato.vscode-diff",
+        "ms-python.black-formatter"
+    ]
+}

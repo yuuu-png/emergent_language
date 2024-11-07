@@ -1,0 +1,398 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Continuous SimCLR",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/continuous_simclr/train.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--project=local_dev_run",
+                // "--fast_dev_run",
+                "--epoch=2",
+                "--data_augmentation",
+                "--limit_batches=3",
+                // MNIST
+                // "--dataset=mnist",
+                // "--backbone=monotone28",
+                // "--backbone_checkpoint=ishiyama-k/pretrain/model-t41q4r5f:v1",
+                // CIFAR-10
+                "--dataset=cifar10",
+                "--backbone=color32",
+                // "--backbone_checkpoint=ishiyama-k/pretrain/model-xq58fu0i:v1", // 512
+                "--backbone=pretrained_vit_b_16",
+                // for test the code
+            ]
+        },
+        {
+            "name": "generate",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/generate/train.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                // MNIST
+                // "--dataset=mnist",
+                // "--backbone=monotone28",
+                // "--backbone_checkpoint=ishiyama-k/pretrain/model-fasiv9td:v1", // 256, aug
+                // CIFAR-10
+                "--dataset=cifar10",
+                "--backbone=color32",
+                // "--backbone_checkpoint=ishiyama-k/pretrain/model-uj6a1jgl:v1", // 256, aug
+                // Gumbel-Softmax with REINFORCE algorithm
+                // "--detach_message",
+                // "--gumbel_softmax",
+                // "--straight_through",
+                // Gumbel-Softmax with standard backpropagation
+                // "--gumbel_softmax",
+                // "--wo_policy_loss",
+                // "--entropy_coeff=0",
+                // for test the code
+                "--save_interval=10",
+                // "--fast_dev_run",
+                "--project=local_dev_run",
+                // "--offline",
+                "--epoch=1",
+                // "--backbone=pretrained_vit_b_16",
+                "--limit_batches=2",
+                "--data_augmentation",
+            ]
+        },
+        {
+            "name": "generate-copy",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/generate/copy_with.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--fast_dev_run",
+                "--epoch=2",
+                "--project=local_dev_run",
+                "--id=ishiyama-k/generate-sweep/ovy8fato",
+                "--limit_batches=2",
+            ]
+        },
+        {
+            "name": "generate-sweep",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/generate/sweep.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                // "--fast_dev_run",
+                "--count=2",
+                "--project=local_dev_run",
+                "--epoch=2",
+                "--limit_batches=2",
+            ]
+        },
+        {
+            "name": "generate-classify",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/generate/classify.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                // "--fast_dev_run",
+                "--epoch=2",
+                "--project=local_dev_run",
+                "--checkpoint=ishiyama-k/local_dev_run/model-zy6ird9f:v1"
+            ]
+        },
+        {
+            "name": "pretrain",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/pretrain/train.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                // "--fast_dev_run",
+                // "--offline",
+                "--batch_size=2048",
+                "--data_augmentation",
+                // MNIST
+                // "--dataset=mnist",
+                // "--backbone=monotone28",
+                // CIFAR-10
+                "--dataset=cifar10",
+                "--backbone=color32",
+                // "--backbone=pretrained_vit_b_16",
+                "--epoch=2",
+                "--project=local_dev_run",
+                "--save_interval=1",
+            ]
+        },
+        {
+            "name": "pretrain-sweep",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/pretrain/sweep.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--fast_dev_run",
+                "--count=1",
+                "--project=local_dev_run",
+            ]
+        },
+        {
+            "name": "pretrain-classify",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/pretrain/classify.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                // "--fast_dev_run",
+                // "--offline",
+                "--epoch=100",
+                "--project=local_dev_run",
+                // "--dataset=cifar10",
+                "--save_interval=1",
+                "--checkpoint=ishiyama-k/pretrain/model-53d1fygt:v1"
+            ]
+        },
+        {
+            "name": "instance",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/instance/train.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                // MNIST
+                // "--dataset=mnist",
+                // "--backbone=monotone28",
+                // "--backbone_checkpoint=ishiyama-k/pretrain/model-t41q4r5f:v1",
+                // CIFAR-10
+                "--dataset=coco_detections",
+                // "--dataset=cifar10",
+                // "--backbone=color32",
+                "--backbone=dino_s_16",
+                // "--backbone=pretrained_resnet18",
+                // "--backbone=pretrained_vit_b_16",
+                // "--backbone_checkpoint=ishiyama-k/pretrain/model-uj6a1jgl:v1", // 256, aug
+                // Gumbel-Softmax with REINFORCE algorithm
+                // "--detach_message",
+                // "--gumbel_softmax",
+                // "--straight_through",
+                // Lazy Speaker
+                // "--lazy_speaker",
+                // Classification
+                // "--classifier",
+                // for test the code
+                "--save_interval=1",
+                // "--fast_dev_run",
+                "--project=local_dev_run",
+                "--offline",
+                "--epoch=1",
+                // "--limit_batches=2",
+                "--batch_size=32",
+                // "--show_last_attention",
+                // "--num_workers=0",
+                "--max_smallers_num=1",
+                // "--smallest_smaller=10000",
+                "--batches_to_log=0",
+                // "--only_positive_samples",
+                "--instance_rate=0.5",
+                "--instance_identification=0.5",
+                "--simclr",
+            ]
+        },
+        {
+            "name": "translate",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/translate/train.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--data_augmentation",
+                // MNIST
+                // "--dataset=mnist",
+                // "--backbone=monotone28",
+                // "--backbone_checkpoint=ishiyama-k/pretrain/model-t41q4r5f:v1",
+                // CIFAR-10
+                "--dataset=coco",
+                // "--dataset=cifar10",
+                // "--backbone=color32",
+                // "--backbone=dino_b_16",
+                "--backbone=dino_s_16",
+                // "--backbone=pretrained_resnet18",
+                // "--backbone=pretrained_vit_b_16",
+                // "--backbone_checkpoint=ishiyama-k/pretrain/model-uj6a1jgl:v1", // 256, aug
+                // Gumbel-Softmax with REINFORCE algorithm
+                // "--detach_message",
+                // "--gumbel_softmax",
+                // "--straight_through",
+                // Gumbel-Softmax with standard backpropagation
+                // Lazy Speaker
+                // "--lazy_speaker",
+                // Classification
+                // "--classifier",
+                // for test the code
+                "--save_interval=1",
+                // "--fast_dev_run",
+                "--project=local_dev_run",
+                "--offline",
+                "--epoch=1",
+                "--limit_batches=2",
+                "--batch_size=64",
+                // "--show_last_attention",
+                // "--num_workers=0",
+            ]
+        },
+        {
+            "name": "SimCLR",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/simclr/train.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--data_augmentation",
+                // MNIST
+                // "--dataset=mnist",
+                // "--backbone=monotone28",
+                // "--backbone_checkpoint=ishiyama-k/pretrain/model-t41q4r5f:v1",
+                // CIFAR-10
+                // "--dataset=superCLEVR",
+                "--dataset=cifar10",
+                // "--backbone=color32",
+                // "--backbone=dino_b_16",
+                "--backbone=dino_s_16",
+                // "--backbone=pretrained_resnet18",
+                // "--backbone=pretrained_vit_b_16",
+                // "--backbone_checkpoint=ishiyama-k/pretrain/model-uj6a1jgl:v1", // 256, aug
+                // Gumbel-Softmax with REINFORCE algorithm
+                // "--detach_message",
+                // "--gumbel_softmax",
+                // "--straight_through",
+                // Gumbel-Softmax with standard backpropagation
+                // Lazy Speaker
+                // "--lazy_speaker",
+                // Classification
+                // "--classifier",
+                // for test the code
+                "--save_interval=1",
+                // "--fast_dev_run",
+                "--project=local_dev_run",
+                "--offline",
+                "--epoch=1",
+                "--limit_batches=2",
+                "--batch_size=64",
+                // "--show_last_attention",
+                // "--num_workers=0",
+                "--augmentation_min_scale=0.2",
+                "--augmentation_sub_min_scale=0.08",
+                "--augmentation_sub_max_scale=0.1",
+            ]
+        },
+        {
+            "name": "SimCLR-copy",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/simclr/copy_with.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                // "--fast_dev_run",
+                "--epoch=2",
+                "--project=local_dev_run",
+                "--id=ishiyama-k/simclr-sweep/5ehksdjl",
+            ]
+        },
+        {
+            "name": "SimCLR-sweep",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/simclr/sweep.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--fast_dev_run",
+                "--count=2",
+                "--project=local_dev_run",
+            ]
+        },
+        {
+            "name": "SimCLR-classify",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/simclr/classify.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                // "--fast_dev_run",
+                "--epoch=2",
+                "--project=local_dev_run",
+                "--checkpoint=ishiyama-k/local_dev_run/model-uy09yfek:v1",
+            ]
+        },
+        {
+            "name": "SimCLR-attention-map",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/simclr/attention_map.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                // "--fast_dev_run",
+                "--project=simclr_attention",
+                "--backbone_dim=128",
+                // CIFAR-10
+                // "--checkpoint=ishiyama-k/simclr/model-aai2vtg8:v1",
+                // COCO
+                // "--dataset=coco",
+                // super-CLEVR
+                "--dataset=superCLEVR",
+                // "--checkpoint=ishiyama-k/simclr/model-kin6s8up:v1", // coco 0.2
+                // "--checkpoint=ishiyama-k/simclr/model-h03rzraz:v1", // coco 0.08
+                "--checkpoint=ishiyama-k/simclr/model-q51r04q3:v1", // superCLEVR 0.08
+                "--batch_size=64",
+                // test
+                // "--limit_batches=2",
+            ]
+        },
+        {
+            "name": "SimCLR-gen-dataset",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wandb/simclr/gen_dataset.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--backbone_dim=128",
+                // CIFAR-10
+                // "--checkpoint=ishiyama-k/simclr/model-aai2vtg8:v1",
+                // COCO
+                "--dataset=coco",
+                // "--checkpoint=ishiyama-k/simclr/model-kin6s8up:v1", // coco 0.2
+                "--checkpoint=ishiyama-k/simclr/model-h03rzraz:v1", // coco 0.08
+                "--batch_size=256",
+                // test
+                // "--fast_dev_run",
+                // "--project=loacl_dev_run",
+                // "--limit_batches=2",
+            ]
+        },
+    ],
+}

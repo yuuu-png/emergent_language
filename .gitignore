@@ -1,0 +1,23 @@
+/.idea
+
+/artifacts
+
+/EGG
+
+__pycache__/
+
+/w-*
+
+/wandb
+
+.env
+
+- .sif
+
+docker-compose.yml
+
+Dockerfile
+
+requirements.txt
+
+!/docker/**/*

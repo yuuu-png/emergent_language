@@ -1,0 +1,16 @@
+services:
+  pytorch_env:
+    build: .
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/work
+      - ${HOST_DATA_DIR}:/data
+    shm_size: 16g
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]

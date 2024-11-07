@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  pytorch_rootless_env:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/work
+      - ${HOST_DATA_DIR}:/data
+    shm_size: 16g
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all

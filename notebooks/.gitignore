@@ -1,0 +1,4 @@
+*
+!.gitignore
+!generate_new_image.ipynb
+!coco.ipynb
